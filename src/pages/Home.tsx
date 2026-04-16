@@ -33,7 +33,7 @@ const fadeUp = {
 const rotatingWords = ['imaginer', 'apprendre', 'concevoir', 'vendre', 'déployer'];
 const githubUsername =
   profile.github.split('/').filter(Boolean).pop() ?? 'BenBro4Web3';
-const githubHeatmapUrl = `https://ghchart.rshah.org/22c55e/${githubUsername}`;
+const githubHeatmapUrl = `https://gh-heat.anishroy.com/api/${githubUsername}/svg?theme=green&darkMode=true&transparent=true&showLegend=true&showDayLabels=true&showMonthLabels=true`;
 
 export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -46,7 +46,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <>
+    <main className="relative isolate overflow-hidden">
+      <div aria-hidden="true" className="site-gradient-field" />
       <SEOHead
         title="Benjamin Brochard — Gestion de projet & Automatisation"
         description={profile.description}
@@ -55,7 +56,7 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section
         id="home"
-        className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden"
+        className="section-ambient ambient-violet min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden"
       >
         {/* Background glow */}
         <div className="absolute inset-0 hero-glow" />
@@ -168,7 +169,10 @@ export default function Home() {
       </section>
 
       {/* ===== PROJETS ===== */}
-      <section id="projets" className="py-24 px-6 border-t border-border">
+      <section
+        id="projets"
+        className="section-ambient ambient-cyan py-24 px-6 border-t border-border"
+      >
         <div className="max-w-5xl mx-auto">
           <motion.h2
             className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
@@ -381,13 +385,14 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mt-6 overflow-x-auto rounded-[1.5rem] border border-border/60 bg-white p-4 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.28)]">
+                <div className="relative mt-6 overflow-x-auto rounded-[1.5rem] border border-white/10 bg-[#0d1117] p-4 shadow-[0_24px_60px_-35px_rgba(2,12,27,0.88)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_38%)]" />
                   <img
                     src={githubHeatmapUrl}
                     alt="Carte de chaleur des contributions GitHub de BenBro4Web3"
                     loading="lazy"
                     decoding="async"
-                    className="block min-w-[640px]"
+                    className="relative block h-auto min-w-[680px] max-w-none opacity-95"
                   />
                 </div>
               </div>
@@ -397,7 +402,10 @@ export default function Home() {
       </section>
 
       {/* ===== PARCOURS ===== */}
-      <section id="parcours" className="py-24 px-6 border-t border-border">
+      <section
+        id="parcours"
+        className="section-ambient ambient-indigo py-24 px-6 border-t border-border"
+      >
         <div className="max-w-4xl mx-auto">
           <motion.h2
             className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
@@ -466,7 +474,10 @@ export default function Home() {
       </section>
 
       {/* ===== COMPETENCES ===== */}
-      <section id="competences" className="py-24 px-6 border-t border-border">
+      <section
+        id="competences"
+        className="section-ambient ambient-emerald py-24 px-6 border-t border-border"
+      >
         <div className="max-w-5xl mx-auto">
           <motion.h2
             className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
@@ -521,7 +532,10 @@ export default function Home() {
       </section>
 
       {/* ===== CONTACT ===== */}
-      <section id="contact" className="py-24 px-6 border-t border-border">
+      <section
+        id="contact"
+        className="section-ambient ambient-rose py-24 px-6 border-t border-border"
+      >
         <div className="max-w-3xl mx-auto text-center">
           <motion.h2
             className="text-sm tracking-widest uppercase text-primary mb-2 font-mono"
@@ -623,6 +637,6 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </main>
   );
 }
