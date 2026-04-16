@@ -1,6 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { ExternalLink, Mail, Linkedin, ArrowDown, Lock, ChevronRight } from 'lucide-react';
+import {
+  ExternalLink,
+  Mail,
+  Linkedin,
+  ArrowDown,
+  Lock,
+  ChevronRight,
+  Github,
+} from 'lucide-react';
 import {
   profile,
   stats,
@@ -21,6 +29,20 @@ const fadeUp = {
 };
 
 const rotatingWords = ['imaginer', 'apprendre', 'concevoir', 'vendre', 'déployer'];
+const githubUsername =
+  profile.github.split('/').filter(Boolean).pop() ?? 'BenBro4Web3';
+const githubStatsCardUrl = `https://github-readme-stats.vercel.app/api?${new URLSearchParams({
+  username: githubUsername,
+  show_icons: 'true',
+  hide_border: 'true',
+  hide_title: 'true',
+  theme: 'transparent',
+  title_color: 'ffffff',
+  text_color: 'e2e8f0',
+  icon_color: '93c5fd',
+  ring_color: '60a5fa',
+  bg_color: '00000000',
+}).toString()}`;
 
 export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -147,134 +169,10 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <a href="#parcours" aria-label="Scroll down">
+          <a href="#projets" aria-label="Scroll down">
             <ArrowDown className="size-5 text-muted-foreground animate-bounce" />
           </a>
         </motion.div>
-      </section>
-
-      {/* ===== PARCOURS ===== */}
-      <section id="parcours" className="py-24 px-6 border-t border-border">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-            variants={fadeUp}
-          >
-            Parcours
-          </motion.h2>
-          <motion.h3
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={1}
-            variants={fadeUp}
-          >
-            Expériences clés
-          </motion.h3>
-
-          <div className="relative space-y-8">
-            {/* Vertical line */}
-            <div className="absolute left-[7px] top-3 bottom-3 w-px bg-border" />
-
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                className="relative pl-10"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i + 2}
-                variants={fadeUp}
-              >
-                {/* Dot */}
-                <div className="absolute left-0 top-3 w-[15px] h-[15px] rounded-full bg-primary/20 border-2 border-primary" />
-
-                {/* Card */}
-                <div className="p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-colors">
-                  <span className="text-xs text-primary font-mono bg-primary/10 px-2.5 py-1 rounded">
-                    {exp.period}
-                  </span>
-                  <h4 className="text-lg font-semibold mt-3">{exp.company}</h4>
-                  <p className="text-sm text-primary/80">{exp.role}</p>
-                  <p className="text-sm text-muted-foreground font-light mt-3">
-                    {exp.description}
-                  </p>
-                  <ul className="mt-3 space-y-1.5">
-                    {exp.highlights.map((h) => (
-                      <li
-                        key={h}
-                        className="text-sm text-muted-foreground flex items-start gap-2"
-                      >
-                        <ChevronRight className="size-3 text-primary shrink-0 mt-1" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== COMPETENCES ===== */}
-      <section id="competences" className="py-24 px-6 border-t border-border">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-            variants={fadeUp}
-          >
-            Expertise
-          </motion.h2>
-          <motion.h3
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={1}
-            variants={fadeUp}
-          >
-            Compétences & outils
-          </motion.h3>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((cat, i) => (
-              <motion.div
-                key={cat.category}
-                className="p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-colors"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i + 2}
-                variants={fadeUp}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-2xl">{cat.icon}</span>
-                  <h4 className="font-semibold">{cat.category}</h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ===== PROJETS ===== */}
@@ -418,6 +316,192 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-10 block overflow-hidden rounded-[2rem] border border-border/70 bg-card/95 shadow-[0_30px_90px_-55px_rgba(15,23,42,0.55)] transition-transform duration-300 hover:-translate-y-1"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={internalProjects.length + 3}
+            variants={fadeUp}
+          >
+            <div className="relative overflow-hidden rounded-[calc(2rem-1px)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.14),transparent_42%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(148,163,184,0.14),transparent_44%)]" />
+              <div className="relative grid gap-8 p-6 md:grid-cols-[1.2fr_0.9fr] md:items-center md:p-8">
+                <div>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground backdrop-blur">
+                    <Github className="size-3.5" />
+                    GitHub
+                  </span>
+                  <h4 className="mt-5 text-2xl font-semibold text-foreground md:text-3xl">
+                    BenBro4Web3
+                  </h4>
+                  <p className="mt-2 max-w-xl text-sm font-light leading-6 text-muted-foreground md:text-base">
+                    Une vue directe sur mon profil GitHub pour parcourir mes
+                    dépôts publics, mes prototypes et mes expérimentations.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {['@BenBro4Web3', 'Code public', 'Prototypes', 'Web3'].map((label) => (
+                      <span
+                        key={label}
+                        className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground"
+                      >
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 flex items-center justify-between gap-4 border-t border-border/60 pt-5">
+                    <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground/80">
+                      github.com/{githubUsername}
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                      Voir le profil
+                      <ExternalLink className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/95 p-4 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.85)]">
+                  <img
+                    src={githubStatsCardUrl}
+                    alt="Carte GitHub de BenBro4Web3"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full rounded-2xl"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.a>
+        </div>
+      </section>
+
+      {/* ===== PARCOURS ===== */}
+      <section id="parcours" className="py-24 px-6 border-t border-border">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+            variants={fadeUp}
+          >
+            Parcours
+          </motion.h2>
+          <motion.h3
+            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={1}
+            variants={fadeUp}
+          >
+            Expériences clés
+          </motion.h3>
+
+          <div className="relative space-y-8">
+            {/* Vertical line */}
+            <div className="absolute left-[7px] top-3 bottom-3 w-px bg-border" />
+
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={exp.company}
+                className="relative pl-10"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i + 2}
+                variants={fadeUp}
+              >
+                {/* Dot */}
+                <div className="absolute left-0 top-3 w-[15px] h-[15px] rounded-full bg-primary/20 border-2 border-primary" />
+
+                {/* Card */}
+                <div className="p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-colors">
+                  <span className="text-xs text-primary font-mono bg-primary/10 px-2.5 py-1 rounded">
+                    {exp.period}
+                  </span>
+                  <h4 className="text-lg font-semibold mt-3">{exp.company}</h4>
+                  <p className="text-sm text-primary/80">{exp.role}</p>
+                  <p className="text-sm text-muted-foreground font-light mt-3">
+                    {exp.description}
+                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {exp.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="text-sm text-muted-foreground flex items-start gap-2"
+                      >
+                        <ChevronRight className="size-3 text-primary shrink-0 mt-1" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== COMPETENCES ===== */}
+      <section id="competences" className="py-24 px-6 border-t border-border">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            className="text-sm tracking-widest uppercase text-primary text-center mb-2 font-mono"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+            variants={fadeUp}
+          >
+            Expertise
+          </motion.h2>
+          <motion.h3
+            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={1}
+            variants={fadeUp}
+          >
+            Compétences & outils
+          </motion.h3>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((cat, i) => (
+              <motion.div
+                key={cat.category}
+                className="p-6 bg-card rounded-xl border border-border hover:border-primary/30 transition-colors"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i + 2}
+                variants={fadeUp}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-2xl">{cat.icon}</span>
+                  <h4 className="font-semibold">{cat.category}</h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {cat.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
+                    >
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
             ))}

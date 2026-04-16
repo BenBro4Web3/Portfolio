@@ -6,9 +6,9 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 const navLinks = [
   { name: 'Accueil', href: '#home' },
+  { name: 'Projets', href: '#projets' },
   { name: 'Parcours', href: '#parcours' },
   { name: 'Compétences', href: '#competences' },
-  { name: 'Projets', href: '#projets' },
   { name: 'Contact', href: '#contact' },
 ];
 

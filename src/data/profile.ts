@@ -10,7 +10,7 @@ export const profile = {
   email: 'benjamin.brochard@gmail.com',
   location: 'France',
   linkedin: 'https://linkedin.com/in/benjaminbrochard',
-  github: 'https://github.com/benjaminbrochard',
+  github: 'https://github.com/BenBro4Web3',
 };
 
 export const stats = [
@@ -170,15 +170,15 @@ export const publicProjects: ProjectItem[] = [
     isPublic: true,
   },
   {
-    id: 'rennes-pneus',
-    title: 'Rennes Pneus',
-    subtitle: 'Site vitrine — Garage & spécialiste pneus',
+    id: 'backyard-valderuz',
+    title: 'Backyard Ultra Val-de-Ruz',
+    subtitle: 'Site événementiel — Course ultra-endurance',
     description:
-      'Site vitrine avec agent IA multi-canaux intégré, capable de gérer la logique métier du garage (devis, RDV, références produits) et d\'alimenter le CRM en temps réel depuis le chat, WhatsApp ou téléphone.',
-    url: 'https://rennes-wheel-revival.lovable.app/',
-    tags: ['Site vitrine', 'Automobile', 'Services locaux'],
-    gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
-    image: '/images/projects/rennes-pneus.png',
+      'Site vitrine et plateforme d\'inscription pour un événement Backyard Ultra en Suisse. Gestion des places limitées (150 participants), parcours interactif avec téléchargement GPX, multilingue FR/DE/EN.',
+    url: 'https://backyard-valderuz.ch',
+    tags: ['Site événementiel', 'Sport', 'Multilingue'],
+    gradient: 'linear-gradient(135deg, #16a34a, #22d3ee)',
+    image: '/images/projects/backyard-valderuz.jpg',
     isPublic: true,
   },
   {
@@ -193,15 +193,15 @@ export const publicProjects: ProjectItem[] = [
     isPublic: true,
   },
   {
-    id: 'privatememe',
-    title: 'Privatememe',
-    subtitle: 'Application web — Cartes postales & memes personnalisés',
+    id: 'resa-restranslate',
+    title: 'ResTranslate Résa',
+    subtitle: 'SaaS — Réservation en ligne pour restaurants',
     description:
-      'Application permettant de créer et envoyer des cartes postales personnalisées avec vos photos, intégrant le FaceSwap pour transformer vos meilleurs memes et les partager avec vos proches.',
-    url: 'https://privatememe.com/',
-    tags: ['App web', 'React', 'Communauté'],
-    gradient: 'linear-gradient(135deg, #a855f7, #ec4899)',
-    image: '/images/projects/privatememe.png',
+      'Module de réservation en ligne intégrable en 2 minutes. Widget responsive, personnalisable (couleurs, logo, créneaux), disponible 24h/24, sans commission. 80 €/mois par restaurant.',
+    url: 'https://resa.restranslate.com/',
+    tags: ['SaaS', 'Réservation', 'Widget', 'Restauration'],
+    gradient: 'linear-gradient(135deg, #6366f1, #a855f7)',
+    image: '/images/projects/resa-restranslate.jpg',
     isPublic: true,
   },
 ];
