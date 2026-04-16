@@ -126,11 +126,15 @@ export interface ProjectItem {
   subtitle: string;
   description: string;
   url?: string;
+  cta?: { label: string; url: string };
   tags: string[];
   gradient: string;
   image?: string;
   isPublic: boolean;
 }
+
+const hubspotDemoUrl =
+  'https://meetings.hubspot.com/nfcfeedback-pro?uuid=759b55e5-c849-4ac3-be86-fbfb42d82a11';
 
 export const publicProjects: ProjectItem[] = [
   {
@@ -140,9 +144,22 @@ export const publicProjects: ProjectItem[] = [
     description:
       'Plateforme de menus digitaux traduits en 12 langues avec diffusion multi-canaux (QR Code, Google Business, réseaux sociaux). Dashboard Looker Studio intégré.',
     url: 'https://restranslate.com/',
+    cta: { label: 'Démo', url: hubspotDemoUrl },
     tags: ['SaaS', 'Multi-langues', 'QR Code', 'Looker Studio'],
     gradient: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
     image: '/images/projects/restranslate.png',
+    isPublic: true,
+  },
+  {
+    id: 'resa-restranslate',
+    title: 'ResTranslate Résa',
+    subtitle: 'SaaS — Réservation en ligne pour restaurants',
+    description:
+      'Module de réservation en ligne intégrable en 2 minutes. Widget responsive, personnalisable (couleurs, logo, créneaux), disponible 24h/24, sans commission. 80 €/mois par restaurant.',
+    cta: { label: 'Demander une démo', url: hubspotDemoUrl },
+    tags: ['SaaS', 'Réservation', 'Widget', 'Restauration'],
+    gradient: 'linear-gradient(135deg, #6366f1, #a855f7)',
+    image: '/images/projects/resa-restranslate.jpg',
     isPublic: true,
   },
   {
@@ -152,6 +169,7 @@ export const publicProjects: ProjectItem[] = [
     description:
       'Présence web + acquisition locale pour un service de nettoyage automobile à domicile. SEO local et parcours de prise de contact.',
     url: 'https://breizh-car-clean.fr/',
+    cta: { label: 'Visiter le site de Maxime', url: 'https://breizh-car-clean.fr/' },
     tags: ['Site vitrine', 'SEO local', 'Acquisition'],
     gradient: 'linear-gradient(135deg, #10b981, #22c55e)',
     image: '/images/projects/breizh-car-clean.png',
@@ -164,6 +182,7 @@ export const publicProjects: ProjectItem[] = [
     description:
       "Vitrine premium + parcours de contact et estimation de reprise pour un négociant automobile haut de gamme.",
     url: 'https://generationautopassion.com/',
+    cta: { label: 'Trouver votre véhicule sur le site de Rani', url: 'https://generationautopassion.com/' },
     tags: ['Site vitrine', 'Lead gen', 'Automobile'],
     gradient: 'linear-gradient(135deg, #f59e0b, #f97316)',
     image: '/images/projects/generation-auto-passion.png',
@@ -176,6 +195,7 @@ export const publicProjects: ProjectItem[] = [
     description:
       'Site vitrine et plateforme d\'inscription pour un événement Backyard Ultra en Suisse. Gestion des places limitées (150 participants), parcours interactif avec téléchargement GPX, multilingue FR/DE/EN.',
     url: 'https://backyard-valderuz.ch',
+    cta: { label: "S'inscrire à la course sur le site d'Eliot", url: 'https://backyard-valderuz.ch' },
     tags: ['Site événementiel', 'Sport', 'Multilingue'],
     gradient: 'linear-gradient(135deg, #16a34a, #22d3ee)',
     image: '/images/projects/backyard-valderuz.jpg',
@@ -187,21 +207,10 @@ export const publicProjects: ProjectItem[] = [
     subtitle: 'SaaS — Veille & réponse aux appels d\'offres par IA',
     description:
       'Plateforme de détection automatique des appels d\'offres publics avec scoring de pertinence et assistance IA à la rédaction des réponses. Suivi complet du cycle : signaux, opportunités, soumissions.',
+    cta: { label: 'Demander une démo', url: hubspotDemoUrl },
     tags: ['SaaS', 'IA', 'Marchés publics', 'Veille'],
     gradient: 'linear-gradient(135deg, #1e3a5f, #3b82f6)',
     image: '/images/projects/bidsight.png',
-    isPublic: true,
-  },
-  {
-    id: 'resa-restranslate',
-    title: 'ResTranslate Résa',
-    subtitle: 'SaaS — Réservation en ligne pour restaurants',
-    description:
-      'Module de réservation en ligne intégrable en 2 minutes. Widget responsive, personnalisable (couleurs, logo, créneaux), disponible 24h/24, sans commission. 80 €/mois par restaurant.',
-    url: 'https://resa.restranslate.com/',
-    tags: ['SaaS', 'Réservation', 'Widget', 'Restauration'],
-    gradient: 'linear-gradient(135deg, #6366f1, #a855f7)',
-    image: '/images/projects/resa-restranslate.jpg',
     isPublic: true,
   },
 ];

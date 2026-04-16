@@ -8,6 +8,8 @@ import {
   Lock,
   ChevronRight,
   Github,
+  ZoomIn,
+  X,
 } from 'lucide-react';
 import {
   profile,
@@ -31,21 +33,11 @@ const fadeUp = {
 const rotatingWords = ['imaginer', 'apprendre', 'concevoir', 'vendre', 'déployer'];
 const githubUsername =
   profile.github.split('/').filter(Boolean).pop() ?? 'BenBro4Web3';
-const githubStatsCardUrl = `https://github-readme-stats.vercel.app/api?${new URLSearchParams({
-  username: githubUsername,
-  show_icons: 'true',
-  hide_border: 'true',
-  hide_title: 'true',
-  theme: 'transparent',
-  title_color: 'ffffff',
-  text_color: 'e2e8f0',
-  icon_color: '93c5fd',
-  ring_color: '60a5fa',
-  bg_color: '00000000',
-}).toString()}`;
+const githubHeatmapUrl = `https://ghchart.rshah.org/22c55e/${githubUsername}`;
 
 export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -201,11 +193,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {publicProjects.map((project, i) => (
-              <motion.a
+              <motion.div
                 key={project.id}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group bg-card rounded-xl border border-border hover:border-primary/30 transition-all overflow-hidden"
                 initial="hidden"
                 whileInView="visible"
@@ -213,8 +202,15 @@ export default function Home() {
                 custom={i + 2}
                 variants={fadeUp}
               >
-                {/* Screenshot */}
-                <div className="aspect-[16/9] relative overflow-hidden">
+                {/* Screenshot — clickable: lightbox if no url, new tab if url */}
+                <div
+                  className="aspect-[16/9] relative overflow-hidden cursor-pointer"
+                  onClick={() =>
+                    project.url
+                      ? window.open(project.url, '_blank', 'noopener,noreferrer')
+                      : project.image && setLightboxImage({ src: project.image, alt: project.title })
+                  }
+                >
                   {project.image ? (
                     <img
                       src={project.image}
@@ -229,7 +225,11 @@ export default function Home() {
                   )}
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <ExternalLink className="size-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {project.url ? (
+                      <ExternalLink className="size-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    ) : (
+                      <ZoomIn className="size-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    )}
                   </div>
                 </div>
 
@@ -254,8 +254,19 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                  {project.cta && (
+                    <a
+                      href={project.cta.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-5 px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                    >
+                      {project.cta.label}
+                      <ExternalLink className="size-3.5" />
+                    </a>
+                  )}
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
 
@@ -334,7 +345,7 @@ export default function Home() {
           >
             <div className="relative overflow-hidden rounded-[calc(2rem-1px)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.14),transparent_42%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(148,163,184,0.14),transparent_44%)]" />
-              <div className="relative grid gap-8 p-6 md:grid-cols-[1.2fr_0.9fr] md:items-center md:p-8">
+              <div className="relative p-6 md:p-8">
                 <div>
                   <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground backdrop-blur">
                     <Github className="size-3.5" />
@@ -370,13 +381,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/95 p-4 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.85)]">
+                <div className="mt-6 overflow-x-auto rounded-[1.5rem] border border-border/60 bg-white p-4 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.28)]">
                   <img
-                    src={githubStatsCardUrl}
-                    alt="Carte GitHub de BenBro4Web3"
+                    src={githubHeatmapUrl}
+                    alt="Carte de chaleur des contributions GitHub de BenBro4Web3"
                     loading="lazy"
                     decoding="async"
-                    className="w-full rounded-2xl"
+                    className="block min-w-[640px]"
                   />
                 </div>
               </div>
@@ -581,6 +592,37 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* ===== LIGHTBOX ===== */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImage(null)}
+          >
+            <button
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+              onClick={() => setLightboxImage(null)}
+              aria-label="Fermer"
+            >
+              <X className="size-6" />
+            </button>
+            <motion.img
+              src={lightboxImage.src}
+              alt={lightboxImage.alt}
+              className="max-w-full max-h-[90vh] rounded-xl shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
