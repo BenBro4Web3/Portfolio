@@ -120,7 +120,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <a
-              href="#contact"
+              href={`#${t('slug.contact')}`}
               className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
             >
               {t('hero.cta.contact')}
