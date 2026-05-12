@@ -19,6 +19,8 @@ export function SEOHead({
   const location = useLocation();
   const { profile } = useProfileData();
   const { lang } = useLanguage();
+
+  const fullTitle = title
     ? `${title} | ${profile.name}`
     : `${profile.name} — ${profile.subtitle}`;
 
