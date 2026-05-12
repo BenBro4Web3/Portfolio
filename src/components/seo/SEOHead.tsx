@@ -58,7 +58,8 @@ export function SEOHead({
     if (image) updateMetaTag('twitter:image', image);
     updateMetaTag('author', profile.name);
     updateMetaTag('keywords', `IoT, gestion de projet, ${profile.name}, automatisation, SaaS, B2B`);
-  }, [fullTitle, fullDescription, fullUrl, image, type]);
+    document.documentElement.lang = lang;
+  }, [fullTitle, fullDescription, fullUrl, image, type, lang]);
 
   return null;
 }
