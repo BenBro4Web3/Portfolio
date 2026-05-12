@@ -1,12 +1,14 @@
 import { Linkedin, Mail } from 'lucide-react';
 import { profile } from '@/data/profile';
+import { useT } from '@/i18n/LanguageContext';
 
 export function Footer() {
+  const t = useT();
   return (
     <footer className="border-t border-border py-8 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} {profile.name}. Tous droits réservés.
+          © {new Date().getFullYear()} {profile.name}. {t('footer.rights')}
         </p>
         <div className="flex items-center gap-4">
           <a
