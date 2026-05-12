@@ -80,7 +80,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            J'aime{' '}
+            {t('hero.iLove')}{' '}
             <span className="gradient-text inline-block min-w-[280px] md:min-w-[400px] text-left">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -126,7 +126,7 @@ export default function Home() {
               href="#contact"
               className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
             >
-              Me contacter
+              {t('hero.cta.contact')}
             </a>
             <a
               href={profile.linkedin}
@@ -185,7 +185,7 @@ export default function Home() {
             custom={0}
             variants={fadeUp}
           >
-            Réalisations
+            {t('projects.kicker')}
           </motion.h2>
           <motion.h3
             className="text-3xl md:text-4xl font-bold text-center mb-16"
@@ -195,7 +195,7 @@ export default function Home() {
             custom={1}
             variants={fadeUp}
           >
-            Projets publics
+            {t('projects.title')}
           </motion.h3>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -286,7 +286,7 @@ export default function Home() {
             custom={0}
             variants={fadeUp}
           >
-            Projets internes
+            {t('projects.internal.title')}
           </motion.h3>
           <motion.p
             className="text-center text-muted-foreground text-sm mb-12 max-w-lg mx-auto"
@@ -296,8 +296,7 @@ export default function Home() {
             custom={1}
             variants={fadeUp}
           >
-            Outils et automatisations développés en interne. Non publiables
-            (données clients, propriété intellectuelle).
+            {t('projects.internal.subtitle')}
           </motion.p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -362,8 +361,7 @@ export default function Home() {
                     BenBro4Web3
                   </h4>
                   <p className="mt-2 max-w-xl text-sm font-light leading-6 text-muted-foreground md:text-base">
-                    Une vue directe sur mon profil GitHub pour parcourir mes
-                    dépôts publics, mes prototypes et mes expérimentations.
+                    {t('projects.github.tagline')}
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -382,7 +380,7 @@ export default function Home() {
                       github.com/{githubUsername}
                     </span>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
-                      Voir le profil
+                      {t('projects.github.viewProfile')}
                       <ExternalLink className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </span>
                   </div>
@@ -418,7 +416,7 @@ export default function Home() {
             custom={0}
             variants={fadeUp}
           >
-            Parcours
+            {t('experience.kicker')}
           </motion.h2>
           <motion.h3
             className="text-3xl md:text-4xl font-bold text-center mb-16"
@@ -428,7 +426,7 @@ export default function Home() {
             custom={1}
             variants={fadeUp}
           >
-            Expériences clés
+            {t('experience.title')}
           </motion.h3>
 
           <div className="relative space-y-8">
@@ -490,7 +488,7 @@ export default function Home() {
             custom={0}
             variants={fadeUp}
           >
-            Expertise
+            {t('skills.kicker')}
           </motion.h2>
           <motion.h3
             className="text-3xl md:text-4xl font-bold text-center mb-16"
@@ -500,7 +498,7 @@ export default function Home() {
             custom={1}
             variants={fadeUp}
           >
-            Compétences & outils
+            {t('skills.title')}
           </motion.h3>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -558,7 +556,7 @@ export default function Home() {
             custom={1}
             variants={fadeUp}
           >
-            Travaillons ensemble
+            {t('contact.title')}
           </motion.h3>
           <motion.p
             className="text-muted-foreground font-light mb-2 max-w-lg mx-auto"
@@ -578,8 +576,7 @@ export default function Home() {
             custom={3}
             variants={fadeUp}
           >
-            N'hésitez pas à me contacter pour discuter de vos projets ou
-            opportunités.
+            {t('contact.invite')}
           </motion.p>
 
           <motion.div
@@ -623,7 +620,7 @@ export default function Home() {
             <button
               className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
               onClick={() => setLightboxImage(null)}
-              aria-label="Fermer"
+              aria-label={t('lightbox.close')}
             >
               <X className="size-6" />
             </button>
