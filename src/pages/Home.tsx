@@ -51,10 +51,7 @@ export default function Home() {
   return (
     <main className="relative isolate overflow-hidden">
       <div aria-hidden="true" className="site-gradient-field" />
-      <SEOHead
-        title="Benjamin Brochard — Gestion de projet & Automatisation"
-        description={profile.description}
-      />
+      <SEOHead description={profile.description} />
 
       {/* ===== HERO ===== */}
       <section
