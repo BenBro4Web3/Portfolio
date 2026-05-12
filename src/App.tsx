@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 import { lazy, Suspense } from "react";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -18,6 +19,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <LanguageProvider>
         <BrowserRouter>
           <Layout>
             <Suspense fallback={<div className="min-h-screen" />}>
@@ -28,6 +30,7 @@ const App = () => (
             </Suspense>
           </Layout>
         </BrowserRouter>
+        </LanguageProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
