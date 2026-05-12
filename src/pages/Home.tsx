@@ -51,11 +51,11 @@ export default function Home() {
   return (
     <main className="relative isolate overflow-hidden">
       <div aria-hidden="true" className="site-gradient-field" />
-      <SEOHead description={profile.description} />
+      <SEOHead />
 
       {/* ===== HERO ===== */}
       <section
-        id="home"
+        id={t('slug.home')}
         className="section-ambient ambient-violet min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden"
       >
         {/* Background glow */}
@@ -162,7 +162,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <a href="#projets" aria-label="Scroll down">
+          <a href={`#${t('slug.projects')}`} aria-label={t('hero.scroll')}>
             <ArrowDown className="size-5 text-muted-foreground animate-bounce" />
           </a>
         </motion.div>
@@ -170,7 +170,7 @@ export default function Home() {
 
       {/* ===== PROJETS ===== */}
       <section
-        id="projets"
+        id={t('slug.projects')}
         className="section-ambient ambient-cyan py-24 px-6 border-t border-border"
       >
         <div className="max-w-5xl mx-auto">
@@ -362,7 +362,7 @@ export default function Home() {
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {['@BenBro4Web3', 'Code public', 'Prototypes', 'Web3'].map((label) => (
+                    {['@BenBro4Web3', t('projects.github.badge.public'), t('projects.github.badge.prototypes'), 'Web3'].map((label) => (
                       <span
                         key={label}
                         className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs text-muted-foreground"
@@ -387,7 +387,7 @@ export default function Home() {
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_38%)]" />
                   <img
                     src={githubHeatmapUrl}
-                    alt="Carte de chaleur des contributions GitHub de BenBro4Web3"
+                    alt={t('projects.github.heatmapAlt')}
                     loading="lazy"
                     decoding="async"
                     className="relative block h-auto min-w-[680px] max-w-none opacity-95"
@@ -401,7 +401,7 @@ export default function Home() {
 
       {/* ===== PARCOURS ===== */}
       <section
-        id="parcours"
+        id={t('slug.experience')}
         className="section-ambient ambient-indigo py-24 px-6 border-t border-border"
       >
         <div className="max-w-4xl mx-auto">
@@ -473,7 +473,7 @@ export default function Home() {
 
       {/* ===== COMPETENCES ===== */}
       <section
-        id="competences"
+        id={t('slug.skills')}
         className="section-ambient ambient-emerald py-24 px-6 border-t border-border"
       >
         <div className="max-w-5xl mx-auto">
@@ -531,7 +531,7 @@ export default function Home() {
 
       {/* ===== CONTACT ===== */}
       <section
-        id="contact"
+        id={t('slug.contact')}
         className="section-ambient ambient-rose py-24 px-6 border-t border-border"
       >
         <div className="max-w-3xl mx-auto text-center">
@@ -543,7 +543,7 @@ export default function Home() {
             custom={0}
             variants={fadeUp}
           >
-            Contact
+            {t('contact.kicker')}
           </motion.h2>
           <motion.h3
             className="text-3xl md:text-4xl font-bold mb-4"
