@@ -39,9 +39,6 @@ export default function Home() {
   const githubUsername =
     profile.github.split('/').filter(Boolean).pop() ?? 'BenBro4Web3';
   const githubHeatmapUrl = `https://gh-heat.anishroy.com/api/${githubUsername}/svg?theme=green&darkMode=true&transparent=true&showLegend=true&showDayLabels=true&showMonthLabels=true`;
-
-
-export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
@@ -50,7 +47,7 @@ export default function Home() {
       setWordIndex((prev) => (prev + 1) % rotatingWords.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [rotatingWords.length]);
   return (
     <main className="relative isolate overflow-hidden">
       <div aria-hidden="true" className="site-gradient-field" />
