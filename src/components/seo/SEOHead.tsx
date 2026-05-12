@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { profile } from '@/data/profile';
+import { useProfileData } from '@/data/profile';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface SEOHeadProps {
   title?: string;
@@ -16,8 +17,8 @@ export function SEOHead({
   type = 'website'
 }: SEOHeadProps) {
   const location = useLocation();
-
-  const fullTitle = title
+  const { profile } = useProfileData();
+  const { lang } = useLanguage();
     ? `${title} | ${profile.name}`
     : `${profile.name} — ${profile.subtitle}`;
 
