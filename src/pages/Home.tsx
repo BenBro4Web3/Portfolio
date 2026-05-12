@@ -11,15 +11,9 @@ import {
   ZoomIn,
   X,
 } from 'lucide-react';
-import {
-  profile,
-  stats,
-  experiences,
-  skillCategories,
-  publicProjects,
-  internalProjects,
-} from '@/data/profile';
+import { useProfileData } from '@/data/profile';
 import { SEOHead } from '@/components/seo/SEOHead';
+import { useT } from '@/i18n/LanguageContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -30,10 +24,22 @@ const fadeUp = {
   }),
 };
 
-const rotatingWords = ['imaginer', 'apprendre', 'concevoir', 'vendre', 'déployer'];
-const githubUsername =
-  profile.github.split('/').filter(Boolean).pop() ?? 'BenBro4Web3';
-const githubHeatmapUrl = `https://gh-heat.anishroy.com/api/${githubUsername}/svg?theme=green&darkMode=true&transparent=true&showLegend=true&showDayLabels=true&showMonthLabels=true`;
+export default function Home() {
+  const t = useT();
+  const {
+    profile,
+    stats,
+    experiences,
+    skillCategories,
+    publicProjects,
+    internalProjects,
+    rotatingWords,
+  } = useProfileData();
+
+  const githubUsername =
+    profile.github.split('/').filter(Boolean).pop() ?? 'BenBro4Web3';
+  const githubHeatmapUrl = `https://gh-heat.anishroy.com/api/${githubUsername}/svg?theme=green&darkMode=true&transparent=true&showLegend=true&showDayLabels=true&showMonthLabels=true`;
+
 
 export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
