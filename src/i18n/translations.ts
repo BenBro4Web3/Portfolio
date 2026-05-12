@@ -7,6 +7,13 @@ export const translations = {
     'nav.skills': 'Compétences',
     'nav.contact': 'Contact',
 
+    // Slugs (anchor ids)
+    'slug.home': 'accueil',
+    'slug.projects': 'projets',
+    'slug.experience': 'parcours',
+    'slug.skills': 'competences',
+    'slug.contact': 'contact',
+
     // Hero
     'hero.iLove': "J'aime",
     'hero.cta.contact': 'Me contacter',
@@ -21,6 +28,9 @@ export const translations = {
     'projects.github.tagline':
       'Une vue directe sur mon profil GitHub pour parcourir mes dépôts publics, mes prototypes et mes expérimentations.',
     'projects.github.viewProfile': 'Voir le profil',
+    'projects.github.badge.public': 'Code public',
+    'projects.github.badge.prototypes': 'Prototypes',
+    'projects.github.heatmapAlt': 'Carte de chaleur des contributions GitHub de BenBro4Web3',
 
     // Experience
     'experience.kicker': 'Parcours',
@@ -41,6 +51,13 @@ export const translations = {
 
     // Lightbox
     'lightbox.close': 'Fermer',
+
+    // SEO
+    'seo.title': 'Benjamin Brochard — Chef de projet IoT & Freelance',
+    'seo.description':
+      "Portfolio de Benjamin Brochard — IoT, gestion de projet, automatisation, web. Curieux, ouvert & touche-à-tout.",
+    'seo.keywords':
+      'chef de projet IoT, freelance, automatisation, SaaS, LoRaWAN, Benjamin Brochard, gestion de projet, B2B',
   },
   en: {
     // Nav
@@ -49,6 +66,13 @@ export const translations = {
     'nav.experience': 'Experience',
     'nav.skills': 'Skills',
     'nav.contact': 'Contact',
+
+    // Slugs (anchor ids)
+    'slug.home': 'home',
+    'slug.projects': 'projects',
+    'slug.experience': 'experience',
+    'slug.skills': 'skills',
+    'slug.contact': 'contact',
 
     // Hero
     'hero.iLove': 'I love to',
@@ -64,6 +88,9 @@ export const translations = {
     'projects.github.tagline':
       'A direct view of my GitHub profile to browse my public repositories, prototypes and experiments.',
     'projects.github.viewProfile': 'View profile',
+    'projects.github.badge.public': 'Public code',
+    'projects.github.badge.prototypes': 'Prototypes',
+    'projects.github.heatmapAlt': 'GitHub contribution heatmap of BenBro4Web3',
 
     // Experience
     'experience.kicker': 'Career',
@@ -84,6 +111,13 @@ export const translations = {
 
     // Lightbox
     'lightbox.close': 'Close',
+
+    // SEO
+    'seo.title': 'Benjamin Brochard — IoT Project Manager & Freelance',
+    'seo.description':
+      'Portfolio of Benjamin Brochard — IoT, project management, automation, web. Curious, open-minded & all-rounder.',
+    'seo.keywords':
+      'IoT project manager, freelance, automation, SaaS, LoRaWAN, Benjamin Brochard, project management, B2B',
   },
 } as const;
 

@@ -12,11 +12,11 @@ export function Header() {
   const { lang, setLang } = useLanguage();
 
   const navLinks = [
-    { name: t('nav.home'), href: '#home' },
-    { name: t('nav.projects'), href: '#projets' },
-    { name: t('nav.experience'), href: '#parcours' },
-    { name: t('nav.skills'), href: '#competences' },
-    { name: t('nav.contact'), href: '#contact' },
+    { name: t('nav.home'), href: `#${t('slug.home')}` },
+    { name: t('nav.projects'), href: `#${t('slug.projects')}` },
+    { name: t('nav.experience'), href: `#${t('slug.experience')}` },
+    { name: t('nav.skills'), href: `#${t('slug.skills')}` },
+    { name: t('nav.contact'), href: `#${t('slug.contact')}` },
   ];
 
   const LanguageToggle = ({ className }: { className?: string }) => (
@@ -60,7 +60,7 @@ export function Header() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <a href="#home" className="text-lg font-semibold tracking-tight">
+          <a href={`#${t('slug.home')}`} className="text-lg font-semibold tracking-tight">
             B<span className="text-primary">.</span>B
           </a>
 

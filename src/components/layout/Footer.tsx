@@ -1,9 +1,10 @@
 import { Linkedin, Mail } from 'lucide-react';
-import { profile } from '@/data/profile';
+import { useProfileData } from '@/data/profile';
 import { useT } from '@/i18n/LanguageContext';
 
 export function Footer() {
   const t = useT();
+  const { profile } = useProfileData();
   return (
     <footer className="border-t border-border py-8 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">

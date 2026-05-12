@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useProfileData } from '@/data/profile';
-import { useLanguage } from '@/i18n/LanguageContext';
+import { useLanguage, useT } from '@/i18n/LanguageContext';
 
 interface SEOHeadProps {
   title?: string;
@@ -14,17 +14,15 @@ export function SEOHead({
   title,
   description,
   image = '',
-  type = 'website'
+  type = 'website',
 }: SEOHeadProps) {
   const location = useLocation();
   const { profile } = useProfileData();
   const { lang } = useLanguage();
+  const t = useT();
 
-  const fullTitle = title
-    ? `${title} | ${profile.name}`
-    : `${profile.name} — ${profile.subtitle}`;
-
-  const fullDescription = description || profile.description;
+  const fullTitle = title ? `${title} | ${profile.name}` : t('seo.title');
+  const fullDescription = description || t('seo.description');
 
   const baseUrl = window.location.origin;
   const fullUrl = `${baseUrl}${location.pathname}`;
@@ -35,13 +33,11 @@ export function SEOHead({
     const updateMetaTag = (name: string, content: string, isProperty = false) => {
       const attribute = isProperty ? 'property' : 'name';
       let element = document.querySelector(`meta[${attribute}="${name}"]`);
-
       if (!element) {
         element = document.createElement('meta');
         element.setAttribute(attribute, name);
         document.head.appendChild(element);
       }
-
       element.setAttribute('content', content);
     };
 
@@ -50,6 +46,7 @@ export function SEOHead({
     updateMetaTag('og:description', fullDescription, true);
     updateMetaTag('og:type', type, true);
     updateMetaTag('og:url', fullUrl, true);
+    updateMetaTag('og:locale', lang === 'fr' ? 'fr_FR' : 'en_US', true);
     if (image) updateMetaTag('og:image', image, true);
     updateMetaTag('og:site_name', profile.name, true);
     updateMetaTag('twitter:card', 'summary_large_image');
@@ -57,9 +54,9 @@ export function SEOHead({
     updateMetaTag('twitter:description', fullDescription);
     if (image) updateMetaTag('twitter:image', image);
     updateMetaTag('author', profile.name);
-    updateMetaTag('keywords', `IoT, gestion de projet, ${profile.name}, automatisation, SaaS, B2B`);
+    updateMetaTag('keywords', t('seo.keywords'));
     document.documentElement.lang = lang;
-  }, [fullTitle, fullDescription, fullUrl, image, type, lang]);
+  }, [fullTitle, fullDescription, fullUrl, image, type, lang, profile.name, t]);
 
   return null;
 }
