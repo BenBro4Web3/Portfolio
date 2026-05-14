@@ -1,0 +1,28 @@
+# Benjamin Brochard
+
+> Portfolio de Benjamin Brochard — Chef de projet IoT & Freelance. Sales, gestion de projet, IoT, automatisation et web.
+
+Single-page portfolio (SPA) disponible en français (par défaut) et en anglais (`/en`). Les sections sont accessibles via ancres.
+
+## Pages
+
+- [Accueil (FR)](/): Portfolio complet — hero, projets, parcours, compétences, contact.
+- [Home (EN)](/en): Full portfolio — hero, projects, experience, skills, contact.
+
+## Sections (FR)
+
+- [Projets](/#projets): Études de cas et réalisations.
+- [Parcours](/#parcours): Expérience professionnelle.
+- [Compétences](/#competences): Stack technique et expertises.
+- [Contact](/#contact): Formulaire et coordonnées.
+
+## Sections (EN)
+
+- [Projects](/en#projects): Case studies and achievements.
+- [Experience](/en#experience): Professional background.
+- [Skills](/en#skills): Tech stack and expertise.
+- [Contact](/en#contact): Contact form and details.
+
+## Optional
+
+- [Sitemap](/sitemap.xml): Localized sitemap with hreflang alternates.
