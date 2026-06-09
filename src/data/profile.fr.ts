@@ -24,7 +24,7 @@ const stats: Stat[] = [
   { value: '200+', label: 'capteurs déployés' },
   { value: '12', label: 'langues (ResTranslate)' },
   { value: '3+', label: 'ans pilotage IoT' },
-  { value: '6', label: 'projets publiés' },
+  { value: '7', label: 'projets publiés' },
 ];
 
 const experiences: Experience[] = [
@@ -113,6 +113,18 @@ const publicProjects: ProjectItem[] = [
     tags: ['SaaS', 'Réservation', 'Widget', 'Restauration'],
     gradient: 'linear-gradient(135deg, #6366f1, #a855f7)',
     image: '/images/projects/resa-restranslate.jpg',
+    isPublic: true,
+  },
+  {
+    id: 'biencible',
+    title: 'Biencible',
+    subtitle: 'SaaS — Matching biens/clients pour agents immobiliers',
+    description:
+      "Plateforme de prospection immobilière : agrégation des nouveaux biens, matching automatique avec les critères clients, veille concurrentielle et vue cartographique. Screener rapide (1 clic par bien) et données rafraîchies en continu.",
+    cta: { label: 'Demander une démo', url: hubspotDemoUrl },
+    tags: ['SaaS', 'Immobilier', 'Matching', 'Prospection'],
+    gradient: 'linear-gradient(135deg, #0f3d3e, #14b8a6)',
+    image: '/images/projects/biencible.jpg',
     isPublic: true,
   },
   {
