@@ -28,7 +28,6 @@ export default function Home() {
   const t = useT();
   const {
     profile,
-    stats,
     experiences,
     skillCategories,
     publicProjects,
@@ -133,25 +132,6 @@ export default function Home() {
             >
               LinkedIn
             </a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            className="mt-16 flex flex-wrap gap-8 md:gap-12 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-bold text-primary">
-                  {stat.value}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1 max-w-[100px]">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
           </motion.div>
         </div>
 
